@@ -8,6 +8,13 @@ android {
     namespace = "com.rharris.simpleapp"
     compileSdk = 34
 
+    packaging{
+        resources{
+            excludes += "/META-INF/LICENSE.md"
+            excludes += "/META-INF/LICENSE-notice.md"
+        }
+    }
+
     defaultConfig {
         applicationId = "com.rharris.simpleapp"
         minSdk = 30
@@ -49,12 +56,21 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.maps.compose)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
+    testImplementation(libs.mockk.v1137)
+    testImplementation(libs.mockk)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.androidx.ui.test.junit4.android)
+    androidTestImplementation(libs.androidx.navigation.testing)
+    androidTestImplementation(libs.androidx.hilt.navigation.compose)
+    androidTestImplementation(libs.mockk.android)
+    debugImplementation(libs.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
